@@ -34,5 +34,15 @@ namespace Menagel
             menu m = new menu();
             m.Show();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

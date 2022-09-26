@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sql.cs" />
     <EmbeddedResource Include="gestionDesCommandes.resx">
       <DependentUpon>gestionDesCommandes.cs</DependentUpon>
     </EmbeddedResource>
