@@ -26,9 +26,73 @@ namespace Menagel.manager
 
 
         //Create
+        public bool addClient(entity.Client client)
+        {
+            MySqlConnection connect = new MySqlConnection();
+            connect = Connexion();
+            connect.Close();
+            connect.Open();
+
+            MySqlCommand cmd = connect.CreateCommand();
+            cmd.CommandText = "INSERT INTO utilisateur (idClient, civilite, nom, prenom, adresse, ville, cp, mail, tel) VALUES (@Nom, @Prenom, @Civilite, @Adresse, @Ville, @Cp, @Mail, @Tel)";
+
+            cmd.Parameters.AddWithValue("@IdClient", client.IdClient);
+            cmd.Parameters.AddWithValue("@Civilite", client.Civilite);
+            cmd.Parameters.AddWithValue("@Nom", client.Nom);
+            cmd.Parameters.AddWithValue("@Prenom", client.Prenom);
+            cmd.Parameters.AddWithValue("@Ville", client.Ville);
+            cmd.Parameters.AddWithValue("@Cp", client.Cp);
+            cmd.Parameters.AddWithValue("@Mail", client.Mail);
+            cmd.Parameters.AddWithValue("@Tel", client.Tel);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+                connect.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                connect.Close();
+
+                return false;
+
+            }
+        }
+
 
 
         //delete
+        public bool deleteClient(entity.Client client)
+        {
+            MySqlConnection connect = new MySqlConnection();
+            connect = Connexion();
+            connect.Close();
+            connect.Open();
+
+            MySqlCommand cmd = connect.CreateCommand();
+            cmd.CommandText = "DELETE FROM client WHERE utilisateur.id = @IdClient;";
+            cmd.Parameters.AddWithValue("@IdClient", client.IdClient);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+                connect.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                connect.Close();
+
+                return false;
+
+            }
+        }
 
         //update
         public bool updateClient(entity.Client client, entity.Client user)
@@ -72,8 +136,32 @@ namespace Menagel.manager
         }
 
         //readById
+        public List<entity.Client> readById()
+        {
+            List<entity.Client> LiCollecte = new List<entity.Client>();
+            MySqlConnection connect = new MySqlConnection();
+            connect.Close();
+            connect = Connexion();
+            connect.Open();
+            MySqlCommand cmd = connect.CreateCommand();
 
-        //findAll
+            cmd.CommandText = "select * from client WHERE idClient = @IdClient";
+
+            MySqlDataReader collecte = cmd.ExecuteReader();
+            while (collecte.Read())
+            {
+                entity.Client coll = new entity.Client();
+
+                coll.IdClient = collecte.GetInt32("idClient");
+               
+
+                LiCollecte.Add(coll);
+            }
+            connect.Close();
+            return LiCollecte;
+        }
+
+        //readAll
         public List<entity.Client> findAll()
         {
             List<entity.Client> LiCollecte = new List<entity.Client>();
