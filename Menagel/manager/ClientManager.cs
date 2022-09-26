@@ -73,7 +73,7 @@ namespace Menagel.manager
             connect.Open();
 
             MySqlCommand cmd = connect.CreateCommand();
-            cmd.CommandText = "DELETE FROM client WHERE utilisateur.id = @IdClient;";
+            cmd.CommandText = "DELETE FROM client WHERE idClient = @IdClient;";
             cmd.Parameters.AddWithValue("@IdClient", client.IdClient);
 
             try
@@ -95,7 +95,7 @@ namespace Menagel.manager
         }
 
         //update
-        public bool updateClient(entity.Client client, entity.Client user)
+        public bool updateClient(entity.Client client, entity.Client clients)
         {
             MySqlConnection connect = new MySqlConnection();
             connect = Connexion();
