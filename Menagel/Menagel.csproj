@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entity\Client.cs" />
+    <Compile Include="entity\Commande.cs" />
+    <Compile Include="entity\LigneCommande.cs" />
+    <Compile Include="entity\Produit.cs" />
     <Compile Include="GestionDesCommandes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,7 +62,10 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManagerInterface.cs" />
+    <Compile Include="manager\ClientManager.cs" />
+    <Compile Include="manager\CommandeManager.cs" />
+    <Compile Include="manager\CommandLineManager.cs" />
+    <Compile Include="manager\ProductManager.cs" />
     <Compile Include="menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,5 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
