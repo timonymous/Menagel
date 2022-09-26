@@ -1,0 +1,8 @@
+﻿interface ManagerInterface
+{
+
+
+
+
+
+}
