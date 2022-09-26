@@ -21,5 +21,18 @@ namespace Menagel
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+             gestionDesCommandes g = new gestionDesCommandes();
+            g.Show();
+        }
+
+        private void menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

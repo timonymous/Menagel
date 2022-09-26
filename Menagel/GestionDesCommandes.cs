@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Menagel
 {
-    public partial class GestionDesCommandes : Form
+    public partial class gestionDesCommandes : Form
     {
-        public GestionDesCommandes()
+        public gestionDesCommandes()
         {
             InitializeComponent();
         }
@@ -25,6 +25,14 @@ namespace Menagel
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            menu m = new menu();
+            m.Show();
         }
     }
 }
