@@ -24,7 +24,7 @@ namespace Menagel.manager
 
 
         //Create
-        public bool addClient(entity.Client client)
+        public bool addCommande(entity.Commande commande)
         {
             MySqlConnection connect = new MySqlConnection();
             connect = Connexion();
@@ -32,16 +32,14 @@ namespace Menagel.manager
             connect.Open();
 
             MySqlCommand cmd = connect.CreateCommand();
-            cmd.CommandText = "INSERT INTO utilisateur (idClient, civilite, nom, prenom, adresse, ville, cp, mail, tel) VALUES (@Nom, @Prenom, @Civilite, @Adresse, @Ville, @Cp, @Mail, @Tel)";
+            cmd.CommandText = "INSERT INTO commande (id, date, estPayee, estExpediee, client) VALUES (@Id, @Date, @EstPayee, @EstExpediee, @Client)";
 
-            cmd.Parameters.AddWithValue("@IdClient", client.IdClient);
-            cmd.Parameters.AddWithValue("@Civilite", client.Civilite);
-            cmd.Parameters.AddWithValue("@Nom", client.Nom);
-            cmd.Parameters.AddWithValue("@Prenom", client.Prenom);
-            cmd.Parameters.AddWithValue("@Ville", client.Ville);
-            cmd.Parameters.AddWithValue("@Cp", client.Cp);
-            cmd.Parameters.AddWithValue("@Mail", client.Mail);
-            cmd.Parameters.AddWithValue("@Tel", client.Tel);
+            cmd.Parameters.AddWithValue("@Id", commande.Id);
+            cmd.Parameters.AddWithValue("@Date", commande.Date);
+            cmd.Parameters.AddWithValue("@EstPayee", commande.EstPayee);
+            cmd.Parameters.AddWithValue("@EstExpediee", commande.EstExpediee);
+            cmd.Parameters.AddWithValue("@Client", commande.Client);
+      
 
             try
             {
@@ -63,7 +61,7 @@ namespace Menagel.manager
 
 
         //delete
-        public bool deleteClient(entity.Client client)
+        public bool deleteCommande(entity.Commande commande)
         {
             MySqlConnection connect = new MySqlConnection();
             connect = Connexion();
@@ -71,8 +69,8 @@ namespace Menagel.manager
             connect.Open();
 
             MySqlCommand cmd = connect.CreateCommand();
-            cmd.CommandText = "DELETE FROM client WHERE idClient = @IdClient;";
-            cmd.Parameters.AddWithValue("@IdClient", client.IdClient);
+            cmd.CommandText = "DELETE FROM commande WHERE id = @Id;";
+            cmd.Parameters.AddWithValue("@Id", commande.Id);
 
             try
             {
@@ -93,7 +91,7 @@ namespace Menagel.manager
         }
 
         //update
-        public bool updateClient(entity.Client client, entity.Client clients)
+        public bool updateCommande(entity.Commande commande, entity.Commande commandes)
         {
             MySqlConnection connect = new MySqlConnection();
             connect = Connexion();
@@ -102,17 +100,13 @@ namespace Menagel.manager
 
             MySqlCommand cmd = connect.CreateCommand();
 
-            cmd.CommandText = "UPDATE client SET civilite = @Civilite, nom = @Nom, prenom = @Prenom, adresse = @Adresse, ville = @Ville, cp = @Cp, mail = @Mail, tel = @Tel WHERE idClient = @IdClient;";
+            cmd.CommandText = "UPDATE commande SET date = @Date, estPayee = @EstPayee, estExpediee = @EstExpediee, client = @Client WHERE id = @Id;";
 
-            cmd.Parameters.AddWithValue("@Id", client.IdClient);
-            cmd.Parameters.AddWithValue("@Civilite", client.Civilite);
-            cmd.Parameters.AddWithValue("@Nom", client.Nom);
-            cmd.Parameters.AddWithValue("@Prenom", client.Prenom);
-            cmd.Parameters.AddWithValue("@Adresse", client.Adresse);
-            cmd.Parameters.AddWithValue("@Ville", client.Ville);
-            cmd.Parameters.AddWithValue("@Cp", client.Cp);
-            cmd.Parameters.AddWithValue("@Mail", client.Mail);
-            cmd.Parameters.AddWithValue("@Tel", client.Tel);
+            cmd.Parameters.AddWithValue("@Id", commande.Id);
+            cmd.Parameters.AddWithValue("@Date", commande.Date);
+            cmd.Parameters.AddWithValue("@EstPayee", commande.EstPayee);
+            cmd.Parameters.AddWithValue("@EstExpediee", commande.EstExpediee);
+            cmd.Parameters.AddWithValue("@Client", commande.Client);
 
             try
             {
@@ -134,65 +128,60 @@ namespace Menagel.manager
         }
 
         //readById
-        public List<entity.Client> readById()
+        public List<entity.Commande> readById()
         {
-            List<entity.Client> LiCollecte = new List<entity.Client>();
+            List<entity.Commande> CoCollecte = new List<entity.Commande>();
             MySqlConnection connect = new MySqlConnection();
             connect.Close();
             connect = Connexion();
             connect.Open();
             MySqlCommand cmd = connect.CreateCommand();
 
-            cmd.CommandText = "select * from client WHERE idClient = @IdClient";
+            cmd.CommandText = "select * from commande WHERE id = @Id";
 
             MySqlDataReader collecte = cmd.ExecuteReader();
             while (collecte.Read())
             {
-                entity.Client coll = new entity.Client();
+                entity.Commande coll = new entity.Commande();
 
-                coll.IdClient = collecte.GetInt32("idClient");
+                coll.Id = collecte.GetInt32("id");
 
 
-                LiCollecte.Add(coll);
+                CoCollecte.Add(coll);
             }
             connect.Close();
-            return LiCollecte;
+            return CoCollecte;
         }
 
         //readAll
-        public List<entity.Client> findAll()
+        public List<entity.Commande> ListCommandes()
         {
-            List<entity.Client> LiCollecte = new List<entity.Client>();
+            List<entity.Commande> CoCollecte = new List<entity.Commande>();
             MySqlConnection connect = new MySqlConnection();
             connect.Close();
             connect = Connexion();
             connect.Open();
             MySqlCommand cmd = connect.CreateCommand();
 
-            cmd.CommandText = "select * from client";
+            cmd.CommandText = "select id, date, client from commande";
 
             MySqlDataReader collecte = cmd.ExecuteReader();
             while (collecte.Read())
             {
-                entity.Client coll = new entity.Client();
+                entity.Commande coll = new entity.Commande();
 
-                coll.IdClient = collecte.GetInt32("idClient");
-                coll.Civilite = collecte.GetString("civilite");
-                coll.Nom = collecte.GetString("nom");
-                coll.Prenom = collecte.GetString("prenom");
-                coll.Adresse = collecte.GetString("adresse");
-                coll.Ville = collecte.GetString("ville");
-                coll.Cp = collecte.GetString("cp");
-                coll.Mail = collecte.GetString("mail");
-                coll.Tel = collecte.GetString("tel");
+                coll.Id = collecte.GetInt32("id");
+                coll.Date = collecte.GetDateTime("date");
+                coll.Client = collecte.GetInt32("client");
+             
 
-                LiCollecte.Add(coll);
+                CoCollecte.Add(coll);
             }
             connect.Close();
-            return LiCollecte;
+            return CoCollecte;
         }
 
     }
 
 }
-}
+

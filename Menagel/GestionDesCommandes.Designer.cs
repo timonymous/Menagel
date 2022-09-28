@@ -54,12 +54,15 @@
             // 
             // dgvCommande
             // 
+            this.dgvCommande.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCommande.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCommande.Location = new System.Drawing.Point(12, 108);
             this.dgvCommande.Name = "dgvCommande";
+            this.dgvCommande.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvCommande.Size = new System.Drawing.Size(200, 330);
-            this.dgvCommande.TabIndex = 0;
-            this.dgvCommande.UseWaitCursor = true;
+            this.dgvCommande.TabIndex = 3;
+            this.dgvCommande.Visible = false;
             this.dgvCommande.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Nombre
@@ -85,7 +88,7 @@
             this.btnCommandeTout.TabIndex = 2;
             this.btnCommandeTout.Text = "Tout";
             this.btnCommandeTout.UseVisualStyleBackColor = false;
-            this.btnCommandeTout.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.btnCommandeTout.CheckedChanged += new System.EventHandler(this.checkBox1_Checked);
             // 
             // btnCommandeAPayer
             // 
