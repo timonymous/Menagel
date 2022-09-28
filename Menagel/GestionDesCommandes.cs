@@ -60,12 +60,15 @@ namespace Menagel
             List<entity.Commande> CoCollecte = new List<entity.Commande>();
             manager.CommandeManager commandeManager = new manager.CommandeManager();
 
-            // Récuoération de toutes les collectes 
+            // Récupération de toutes les collectes 
             CoCollecte = commandeManager.ListCommandes();
             dgvCommande.DataSource = CoCollecte;
             dgvCommande.Columns["id"].HeaderText = "idCommande";
             dgvCommande.Columns["estPayee"].Visible = false;
             dgvCommande.Columns["estExpediee"].Visible = false;
+
+            // Récuperation du nombre d'élément
+            labelNbElement.Text = dgvCommande.Rows.Count.ToString();
 
 
         }
@@ -89,6 +92,10 @@ namespace Menagel
             dgvCommande.Columns["id"].HeaderText = "idCommande";
             dgvCommande.Columns["estPayee"].Visible = false;
             dgvCommande.Columns["estExpediee"].Visible = false;
+
+            // Récuperation du nombre d'élément
+            labelNbElement.Text = dgvCommande.Rows.Count.ToString();
+
         }
 
         private void checkBox3_Checked(object sender, EventArgs e)
@@ -110,6 +117,9 @@ namespace Menagel
             dgvCommande.Columns["id"].HeaderText = "idCommande";
             dgvCommande.Columns["estPayee"].Visible = false;
             dgvCommande.Columns["estExpediee"].Visible = false;
+
+            // Récuperation du nombre d'élément
+            labelNbElement.Text = dgvCommande.Rows.Count.ToString();
         }
 
         private void gestionDesCommandes_Load(object sender, EventArgs e)
@@ -129,6 +139,6 @@ namespace Menagel
 
         }
 
-        
+       
     }
 }

@@ -237,6 +237,8 @@ namespace Menagel.manager
             return CoCollecte;
         }
 
+      
+
     }
 
 }

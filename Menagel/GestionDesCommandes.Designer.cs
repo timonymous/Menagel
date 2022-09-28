@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.labelNbElement = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommande)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -264,12 +265,25 @@
             this.label7.Text = "Recherche spécifique";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // labelNbElement
+            // 
+            this.labelNbElement.AutoSize = true;
+            this.labelNbElement.BackColor = System.Drawing.Color.Transparent;
+            this.labelNbElement.ForeColor = System.Drawing.Color.White;
+            this.labelNbElement.Location = new System.Drawing.Point(121, 87);
+            this.labelNbElement.Name = "labelNbElement";
+            this.labelNbElement.Size = new System.Drawing.Size(7, 13);
+            this.labelNbElement.TabIndex = 19;
+            this.labelNbElement.Text = "\r\n";
+            
+            // 
             // gestionDesCommandes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelNbElement);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -321,5 +335,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNbElement;
     }
 }
