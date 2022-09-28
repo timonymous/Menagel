@@ -59,8 +59,9 @@
             this.dgvCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCommande.Location = new System.Drawing.Point(12, 108);
             this.dgvCommande.Name = "dgvCommande";
+            this.dgvCommande.RowHeadersVisible = false;
             this.dgvCommande.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvCommande.Size = new System.Drawing.Size(200, 330);
+            this.dgvCommande.Size = new System.Drawing.Size(214, 330);
             this.dgvCommande.TabIndex = 3;
             this.dgvCommande.Visible = false;
             this.dgvCommande.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -101,6 +102,7 @@
             this.btnCommandeAPayer.TabIndex = 3;
             this.btnCommandeAPayer.Text = "A payer";
             this.btnCommandeAPayer.UseVisualStyleBackColor = false;
+            this.btnCommandeAPayer.CheckedChanged += new System.EventHandler(this.btnCommandeAPayer_Checked);
             // 
             // btnCommandeAExpedier
             // 
@@ -113,7 +115,7 @@
             this.btnCommandeAExpedier.TabIndex = 4;
             this.btnCommandeAExpedier.Text = "A expédier";
             this.btnCommandeAExpedier.UseVisualStyleBackColor = true;
-            this.btnCommandeAExpedier.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.btnCommandeAExpedier.CheckedChanged += new System.EventHandler(this.checkBox3_Checked);
             // 
             // label1
             // 
@@ -130,7 +132,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(233, 298);
+            this.dataGridView2.Location = new System.Drawing.Point(243, 298);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(265, 140);
             this.dataGridView2.TabIndex = 6;
@@ -140,7 +142,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(233, 278);
+            this.label2.Location = new System.Drawing.Point(242, 278);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(213, 13);
             this.label2.TabIndex = 7;

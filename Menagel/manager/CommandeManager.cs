@@ -181,6 +181,62 @@ namespace Menagel.manager
             return CoCollecte;
         }
 
+        //commande A payer
+        public List<entity.Commande> APayer()
+        {
+            List<entity.Commande> CoCollecte = new List<entity.Commande>();
+            MySqlConnection connect = new MySqlConnection();
+            connect.Close();
+            connect = Connexion();
+            connect.Open();
+            MySqlCommand cmd = connect.CreateCommand();
+
+            cmd.CommandText = "select * from commande WHERE estPayee = 0";
+
+            MySqlDataReader collecte = cmd.ExecuteReader();
+            while (collecte.Read())
+            {
+                entity.Commande coll = new entity.Commande();
+
+                coll.Id = collecte.GetInt32("id");
+                coll.Date = collecte.GetDateTime("date");
+                coll.Client = collecte.GetInt32("client");
+
+
+                CoCollecte.Add(coll);
+            }
+            connect.Close();
+            return CoCollecte;
+        }
+
+        //commande A expedier
+        public List<entity.Commande> AExpedier()
+        {
+            List<entity.Commande> CoCollecte = new List<entity.Commande>();
+            MySqlConnection connect = new MySqlConnection();
+            connect.Close();
+            connect = Connexion();
+            connect.Open();
+            MySqlCommand cmd = connect.CreateCommand();
+
+            cmd.CommandText = "select * from commande WHERE estExpediee = 0";
+
+            MySqlDataReader collecte = cmd.ExecuteReader();
+            while (collecte.Read())
+            {
+                entity.Commande coll = new entity.Commande();
+
+                coll.Id = collecte.GetInt32("id");
+                coll.Date = collecte.GetDateTime("date");
+                coll.Client = collecte.GetInt32("client");
+
+
+                CoCollecte.Add(coll);
+            }
+            connect.Close();
+            return CoCollecte;
+        }
+
     }
 
 }
