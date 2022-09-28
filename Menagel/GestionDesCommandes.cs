@@ -70,6 +70,7 @@ namespace Menagel
             // Récuperation du nombre d'élément
             labelNbElement.Text = dgvCommande.Rows.Count.ToString();
 
+            
 
         }
 
@@ -105,7 +106,7 @@ namespace Menagel
 
             dgvCommande.Visible = true;
             dgvCommande.Name = "dgvCommandeAExpedier";
-
+            
 
 
             List<entity.Commande> CoCollecte = new List<entity.Commande>();
@@ -139,6 +140,19 @@ namespace Menagel
 
         }
 
-       
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvCommande_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow recup = dgvCommande.Rows[e.RowIndex];
+                labelIdClient.Text = recup.Cells[4].Value.ToString();
+
+            }
+        }
     }
 }
